@@ -1,0 +1,178 @@
+.teacher-auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.2s ease;
+}
+
+.teacher-auth-modal {
+    background: white;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 400px;
+    padding: 32px 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.3s ease;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-icon {
+    font-size: 56px;
+    margin-bottom: 16px;
+}
+
+.auth-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* PIN-код инпуты */
+.pin-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.pin-digit {
+    width: 60px;
+    height: 70px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: monospace;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg);
+    transition: all 0.2s ease;
+}
+
+.pin-digit:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.pin-digit.error {
+    border-color: var(--error);
+    animation: shake 0.3s ease;
+}
+
+.pin-digit:disabled {
+    background: var(--surface);
+    cursor: not-allowed;
+}
+
+/* Ошибка */
+.auth-error {
+    background: #FEE2E2;
+    color: #DC2626;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* Кнопки */
+.auth-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.auth-btn-cancel,
+.auth-btn-submit {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.auth-btn-cancel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-soft);
+}
+
+.auth-btn-cancel:hover:not(:disabled) {
+    background: var(--border-soft);
+}
+
+.auth-btn-submit {
+    background: var(--primary);
+    border: none;
+    color: white;
+}
+
+.auth-btn-submit:hover:not(:disabled) {
+    background: var(--primary-soft);
+    transform: translateY(-1px);
+}
+
+.auth-btn-submit:disabled,
+.auth-btn-cancel:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Футер */
+.auth-footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding-top: 16px;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.auth-hint {
+    font-size: 0.7rem;
+    color: var(--primary);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

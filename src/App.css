@@ -1,0 +1,778 @@
+:root {
+    --primary: #4F46E5;
+    --primary-soft: #6366F1;
+    --primary-light: #EEF2FF;
+    --bg: #FFFFFF;
+    --surface: #F9FAFB;
+    --text: #18181B;
+    --text-soft: #52525B;
+    --text-muted: #A1A1AA;
+    --border: #E4E4E7;
+    --border-soft: #F1F1F3;
+    --error: #EF4444;
+    --success-bg: #ECFDF3;
+    --success-text: #067647;
+    --blue: #2563EB; /* Добавляем синий цвет */
+    --blue-light: #DBEAFE; /* Светло-синий для фона */
+    --green: #16A34A; /* Зеленый */
+    --green-light: #DCFCE7; /* Светло-зеленый для фона */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: var(--text);
+    padding: 24px 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Шапка с логотипом */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 8px 0;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brand-mark svg {
+    stroke: var(--primary);
+    stroke-width: 1.2;
+}
+
+.logo-text h1 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.logo-text p {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Переключатель ролей */
+.role-tabs {
+    display: flex;
+    gap: 8px;
+    background: var(--surface);
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.role-tab {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-soft);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.role-tab.active {
+    background: white;
+    color: var(--primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+/* Панель выбора */
+.selector-bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-soft);
+    flex-wrap: wrap;
+}
+
+.date-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.date-selector label {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    font-weight: 450;
+}
+
+input[type="date"] {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--bg);
+    transition: all 0.2s ease;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.entity-selector {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.entity-selector label {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    font-weight: 450;
+}
+
+.entity-selector select {
+    padding: 8px 32px 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--bg);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2352525B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    min-width: 160px;
+}
+
+/* Баннер для дистанта */
+.group-remote-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+    font-weight: 500;
+}
+
+/* Заголовок расписания */
+.schedule-header {
+    margin-bottom: 32px;
+}
+
+.entity-name {
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 4px;
+}
+
+.schedule-date {
+    font-size: 1rem;
+    color: var(--text-soft);
+}
+
+/* Список занятий */
+.lessons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Карточка занятия */
+.lesson-item {
+    display: grid;
+    grid-template-columns: 130px 1fr 200px;
+    align-items: start;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-soft);
+    gap: 12px;
+}
+
+/* Блок времени */
+.lesson-time {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.lesson-number {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.lesson-time-range {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.lesson-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.lesson-name-wrapper {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.lesson-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.lesson-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    word-break: break-word;
+}
+
+/* Колонка с изменениями - по умолчанию справа */
+.changes-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+}
+
+/* Бейдж с типом изменения */
+.change-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    width: fit-content;
+}
+
+/* Замена - синий цвет */
+.change-replacement {
+    background: var(--blue-light);
+    color: var(--blue);
+}
+
+/* Перенос - оранжевый (оставляем как было) */
+.change-rescheduled {
+    background: #FFF3E0;
+    color: #EA580C;
+}
+
+/* Новая пара - зеленый */
+.change-new {
+    background: var(--green-light);
+    color: var(--green);
+}
+
+/* Отмена - красный */
+.change-cancelled {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+/* Детальная информация об изменении */
+.change-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.85rem;
+    background: var(--surface);
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-top: 4px;
+}
+
+.change-detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.change-detail-label {
+    color: var(--text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.change-detail-value {
+    color: var(--text);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.change-detail-value.highlight {
+    color: var(--primary);
+}
+
+/* Статусы для отмененных занятий */
+.status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+.status-cancelled {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.lesson-item.cancelled {
+    opacity: 0.6;
+}
+
+.lesson-item.cancelled .lesson-name {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+/* Footer */
+.footer {
+    margin-top: 60px;
+    padding: 24px 0;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 32px;
+}
+
+/* Стили для поиска */
+.search-container {
+    position: relative;
+    width: 320px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--bg);
+    transition: all 0.2s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-top: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.search-results-header {
+    padding: 8px 12px;
+    background: var(--surface);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.search-result-item {
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid var(--border-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover {
+    background: var(--primary-light);
+}
+
+.search-result-item.active {
+    background: var(--primary-light);
+    border-left: 3px solid var(--primary);
+}
+
+.group-name {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.group-specialty-code {
+    font-size: 0.8rem;
+    color: var(--primary);
+    background: var(--primary-light);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.group-course {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background: var(--surface);
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.specialty-group {
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.specialty-header {
+    padding: 8px 12px;
+    background: var(--surface);
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.teacher-name {
+    font-weight: 500;
+    color: var(--text);
+    font-size: 0.95rem;
+    flex: 1;
+}
+
+.search-loading {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.search-no-results {
+    padding: 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* Адаптивность для мобильных устройств от 430px до 932px */
+@media (min-width: 430px) and (max-width: 932px) {
+    .lesson-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .lesson-time {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+    }
+
+    .lesson-number {
+        color: var(--primary);
+        font-size: 1rem;
+    }
+
+    .lesson-time-range {
+        color: var(--text-soft);
+        font-size: 0.9rem;
+    }
+
+    .lesson-info {
+        margin-bottom: 8px;
+    }
+
+    /* Изменения отображаются снизу */
+    .changes-column {
+        width: 100%;
+        margin-top: 8px;
+        align-items: flex-start;
+    }
+
+    .change-badge {
+        text-align: left;
+        margin-bottom: 4px;
+    }
+
+    .change-details {
+        width: 100%;
+        background: var(--surface);
+        padding: 12px;
+        border-radius: 8px;
+    }
+
+    .change-detail-row {
+        width: 100%;
+    }
+
+    .change-detail-label {
+        font-size: 0.7rem;
+    }
+
+    .change-detail-value {
+        font-size: 0.9rem;
+    }
+
+    .search-container {
+        width: 100%;
+    }
+
+    .search-results {
+        max-height: 300px;
+    }
+
+    .search-result-item {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+
+/* Адаптивность для маленьких мобильных (до 430px) */
+@media (max-width: 429px) {
+    .lesson-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .lesson-time {
+        flex-direction: row;
+        align-items: baseline;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-bottom: 6px;
+    }
+
+    .lesson-number {
+        font-size: 0.95rem;
+    }
+
+    .lesson-time-range {
+        font-size: 0.85rem;
+    }
+
+    .changes-column {
+        width: 100%;
+        margin-top: 6px;
+        align-items: flex-start;
+    }
+
+    .change-badge {
+        font-size: 0.7rem;
+        padding: 3px 10px;
+    }
+
+    .change-details {
+        padding: 10px;
+    }
+
+    .change-detail-label {
+        font-size: 0.65rem;
+    }
+
+    .change-detail-value {
+        font-size: 0.85rem;
+    }
+}
+
+/* Адаптивность для планшетов (от 933px до 1024px) */
+@media (min-width: 933px) and (max-width: 1024px) {
+    .lesson-item {
+        grid-template-columns: 120px 1fr 180px;
+        gap: 10px;
+    }
+}
+
+/* Адаптивность для десктопов (> 1024px) */
+@media (min-width: 1025px) {
+    .lesson-item {
+        grid-template-columns: 130px 1fr 220px;
+    }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 0;
+}
+/* Стили для кнопки заявки */
+.lesson-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.request-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+    border: none;
+    border-radius: 24px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: white;
+    box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);
+}
+
+.request-btn svg {
+    transition: transform 0.2s ease;
+}
+
+.request-btn.active {
+    background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+    opacity: 1;
+    cursor: pointer;
+}
+
+.request-btn.active:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.3);
+}
+
+.request-btn.active:hover svg {
+    transform: rotate(90deg);
+}
+
+.request-btn.disabled {
+    background: linear-gradient(135deg, #9CA3AF 0%, #D1D5DB 100%);
+    opacity: 0.6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.request-btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Альтернативный вариант с иконкой без текста на мобильных */
+@media (max-width: 600px) {
+    .request-btn span {
+        display: none;
+    }
+
+    .request-btn {
+        padding: 8px 12px;
+        border-radius: 32px;
+    }
+
+    .request-btn svg {
+        margin: 0;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+    .request-btn span {
+        display: inline;
+    }
+
+    .request-btn {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+}
+/* Стили для даты */
+.date-input.today {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    position: relative;
+}
+
+.date-input.today::after {
+    content: "Сегодня";
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: var(--primary);
+    background: white;
+    padding: 2px 6px;
+    border-radius: 12px;
+}
+.pin-input {
+    text-align: center;
+    font-size: 1.5rem !important;
+    letter-spacing: 8px;
+    font-family: monospace;
+}
+.auth-badge {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 0.7rem;
+}
+
+.auth-badge.auth-active {
+    color: #10B981;
+}
